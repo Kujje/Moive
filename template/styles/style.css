@@ -1,0 +1,335 @@
+@import url('./carousel.css');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Variables */
+:root {
+    --header-grey: #121212;
+    /* Primary BG bör vara din bakgrundsfärg */
+    --primary-bg: #000000;
+    --primary-white: #ffffff;
+    --primary-grey: #1A1A1A;
+    --text-yellow: #F5C518;
+}
+
+/* Base */
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: var(--primary-bg);
+    max-width: 100%;
+}
+
+/* Utils */
+.content-wrapper {
+    max-width: 1180px;
+    margin: 0 auto;
+}
+.center {
+    margin: 0 auto;
+}
+
+.d-none {
+    display: none;
+}
+
+.header {
+    background-color: var(--header-grey);
+    width: 100%;
+    padding: 1.5rem;
+    z-index: 999;
+}
+
+.header__flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__logo {
+    width: 150px;
+    background-color: yellow;
+}
+
+.header__form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.header__input {
+    width: 50%;
+    padding: 1rem;
+    border-radius: 2rem 0 0 2rem;
+    border: none;
+}
+
+.header__form-btn {
+    border-radius: 0 2rem 2rem 0;
+    width: 5rem;
+    border: none;
+    cursor: pointer;
+}
+
+.header__fav-btn {
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: var(--text-yellow);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+/* Stil för filmkort */
+.movies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.popular-title {
+    font-size: 28px; 
+    font-weight: bold;
+    color: var(--text-yellow); 
+    text-align: center;
+    margin: 20px 0;
+    text-transform: uppercase; 
+}
+.movie-card {
+    width: 200px; 
+    height: auto;
+    background-color: #1A1A1A;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.movie-card img {
+    width: 100%; 
+    height: 250px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+.movie-card:hover {
+    transform: scale(1.05);
+}
+
+.movie-poster {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.movie-title {
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.movie-btn {
+    background-color: #F5C518;
+    color: black;
+    font-size: 14px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    margin-top: 8px;
+}
+
+.movie-btn:hover {
+    background-color: #d4a317;
+}
+
+#favoritesContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+@media (max-width: 600px) {
+    .movies-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    }
+
+    .movie-title {
+        font-size: 14px;
+    }
+
+    .movie-btn {
+        font-size: 12px;
+    }
+}
+
+.movie-detail-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    max-width: 900px;
+    margin: 40px auto;
+    background-color: var(--primary-grey);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.movie-detail-poster {
+    width: 250px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.movie-detail-info {
+    flex: 1;
+    color: var(--primary-white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    padding-right: 50px; 
+}
+
+.movie-detail-info h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.movie-detail-info p {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.movie-detail-info strong {
+    color: var(--text-yellow);
+}
+
+.favorite-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 2px solid white;
+    padding: 8px 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    color: white;
+    z-index: 10;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.movie-detail-container {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    max-width: 900px;
+    margin: 40px auto;
+    background-color: var(--primary-grey);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.favorite-btn:hover {
+    background-color: rgba(255, 255, 255, 0.9); 
+    color: red;
+    transform: scale(1.1);
+}
+
+.back-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 15px;
+    background-color: var(--text-yellow);
+    color: black;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    max-width: 150px;
+}
+
+.back-btn:hover {
+    background-color: #d4a517;
+}
+
+.search-title {
+    color: var(--primary-white);
+    text-align: center;
+    margin-top: 20px;
+}
+
+.no-image-text {
+    color: var(--primary-white);
+    font-size: 16px;
+    font-style: italic;
+    text-align: center;
+    padding: 20px;
+    background-color: var(--primary-grey);
+    border-radius: 10px;
+    width: 200px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.missing-image {
+    width: 200px;  
+    height: 300px;
+    object-fit: contain;
+    opacity: 0.8;
+}
+
+.favorite-btn:hover {
+    transform: scale(1.2);
+    background-color: rgba(255, 255, 255, 0.8);
+    color: red;
+}
+
+.movie-card .favorite-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 22px;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 5px 8px;
+    border-radius: 50%;
+    color: white;
+    transition: all 0.2s ease-in-out;
+}
+.movie-detail-card .favorite-btn {
+    position: absolute;
+    top: 15px; 
+    right: 15px;
+    font-size: 24px; 
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 6px 10px;
+    border-radius: 50%;
+}
+
+.movie-detail-card .favorite-btn:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: red;
+}
+.movie-card, .movie-detail-card {
+    position: relative;
+}
+
+@media (max-width: 600px) {
+    .movies-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    }
+}
